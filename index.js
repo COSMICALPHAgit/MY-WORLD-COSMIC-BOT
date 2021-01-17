@@ -24,7 +24,6 @@ client.once('ready', () => {
     
   });
   client.once('guildMemberAdd', member => {
-    let welcomeRole = guildMember.guild.roles.cache.find(role => role.name === 'member');
     let embed = new Discord.RichEmbed()
     .setTitle("Welcome")
     .setAuthor(`${member.user.tag} Has Joined.`, member.user.displayAvatarURL,)
