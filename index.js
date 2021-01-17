@@ -23,15 +23,18 @@ client.once('ready', () => {
     type: 3
     
   });
-  client.once('guildMemberAdd', member => {
-    const exampleEmbed = new Discord.MessageEmbed()
-        .setColor('#0099ff')
-        .setTitle('Welcome')
-        .addField('', member.nickname)
-        .setImage(member.user.avatarURL)
-
-    member.guild.channels.get('776796675125673984').send(exampleEmbed);
-})
+  client.on('guildMemberAdd', member => {
+    const channel = member.guild.channels.find(ch => ch.name === '🙏║𝐖𝐄𝐋𝐂𝐎𝐌𝐄');
+    let embed = new Discord.RichEmbed()
+    .setTitle("Welcome")
+    .setAuthor(`${member.user.tag} Has Joined.`, member.user.displayAvatarURL,)
+    .setThumbnail(member.user.displayAvatarURL)
+    .addField('Date Joined', member.user.createdAt, true)
+    .addField('Total Members', member.guild.memberCount, true)
+  
+      channel.send(embed);
+  });
+  
 
 
 });
