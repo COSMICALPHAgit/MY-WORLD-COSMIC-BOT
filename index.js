@@ -17,9 +17,15 @@ client.on('message', message =>{
   const args = message.content.slice(prefix.length).split(/ +/);
   const command = args.shift().toLowerCase();
 
-  if(command === 'ping'){
-    message.channel.send('pong');
-    
+  if(command === 'off'){
+    const exampleEmbed = new Discord.MessageEmbed()
+    .setColor('#fa0202')
+    .setTitle('SERVER GOING-OFFLINE')                        
+    .setFooter('ADMIN')
+    message.delete();
+    msg.channel.send(exampleEmbed)
+ 
+
   } else if(command === "say"){
     let text = args.join(" ");
     message.delete();
