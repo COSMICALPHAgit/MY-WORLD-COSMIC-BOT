@@ -13,7 +13,7 @@ module.exports = {
 
            
 
-            message.channel.send('you could not ban that member');
+            message.channel.send('you dont have the right permission from the server owner');
 
         }
     }
