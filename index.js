@@ -18,20 +18,38 @@ client.on('message', message =>{
   const command = args.shift().toLowerCase();
 
   if(command === 'off'){
-    const exampleEmbed = new Discord.MessageEmbed()
-    .setColor('#fa0202')
-    .setTitle('SERVER GOING-OFFLINE')                        
-    .setFooter('ADMIN')
     message.delete();
-    msg.channel.send(exampleEmbed)
- 
+    message.channel.send('pong');
 
   } else if(command === "say"){
     let text = args.join(" ");
     message.delete();
     message.channel.send(text);
   }
+})
 
+  client.on('message', (msg) => {
+    if(!message.content.startsWith(prefix) || message.author.bot) return;
+    const args = message.content.slice(prefix.length).split(/ +/);
+    const message = args.shift().toLowerCase();
+
+    if (msg.content === 'off') {
+      const exampleEmbed = new Discord.MessageEmbed()
+      .setColor('#fa0202')
+      .setTitle('SERVER GOING-OFFLINE')                        
+      .setFooter('ADMIN')
+      message.delete();
+      msg.channel.send(exampleEmbed)
+    } 
+    else  if (msg.content === 'tell') {
+      const exampleEmbed = new Discord.MessageEmbed()
+      .setColor('#02fa44')
+      .setTitle('ꜱᴇʀᴠᴇʀ ʀᴇꜱᴛᴀʀᴛɪɴɢ')
+      .setFooter('𝗕𝗬 𝗦𝗘𝗥𝗩𝗘𝗥 𝗢𝗪𝗡𝗘𝗥')
+      message.delete();
+      msg.channel.send(exampleEmbed)
+    }
+  
   
 });
 
