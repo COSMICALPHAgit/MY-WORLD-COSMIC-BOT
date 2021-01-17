@@ -26,7 +26,7 @@ client.once('ready', () => {
   client.on("guildMemberAdd", guildmember =>{
     const embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
-    .setDescription(`**Welcome <@${guildmember.id}>!**`)
+    .setDescription(`**𝙒𝙀𝙇𝘾𝙊𝙈𝙀 𝙏𝙊 𝙊𝙐𝙍 𝙎𝙀𝙍𝙑𝙀𝙍 <@${guildmember.id}>**`)
     .setThumbnail(guildmember.user.displayAvatarURL({dynamic: true}))
     .setTimestamp()
     guildmember.guild.channels.cache.get('776796675125673984').send(`<@${guildmember.id}>`).then(guildmember.guild.channels.cache.get('776796675125673984').send(embed))
