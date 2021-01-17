@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
-const prefix = '!'; //created by COSMIC ALPHA  (OSMI(_ALPHA#1010
+const prefix = '!';              //created by COSMIC ALPHA  (OSMI(_ALPHA#1010
 
 const fs = require('fs');
 
@@ -44,10 +44,13 @@ client.on('message', message => {
   } else if (command === 'ban') {
     client.commands.get('ban').execute(message, args);
 
-  }else if (command === 'command') {
+  }else if (command === 'off') {
     message.delete();
-    client.commands.get('command').execute(message, args, Discord);
+    client.commands.get('off').execute(message, args, Discord);
 
+  }else if (command === 'res') {
+    message.delete();
+    client.commands.get('res').execute(message, args, Discord);
   }
 
 
