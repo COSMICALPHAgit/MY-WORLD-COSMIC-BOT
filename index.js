@@ -45,6 +45,7 @@ client.on('message', message => {
     client.commands.get('ban').execute(message, args);
 
   }else if (command === 'command') {
+    message.delete();
     client.commands.get('command').execute(message, args);
   }
 
