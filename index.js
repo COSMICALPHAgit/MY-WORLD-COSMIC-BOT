@@ -44,8 +44,11 @@ client.on('message', message => {
   } else if (command === 'ban') {
     client.commands.get('ban').execute(message, args);
 
-  }
+  }else if (command === 'command') {
+    message.delete();
+    client.commands.get('command').execute(message, args, Discord);
 
+  }
 
 
 
