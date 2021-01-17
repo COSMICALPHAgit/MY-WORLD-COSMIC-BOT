@@ -24,9 +24,10 @@ client.once('ready', () => {
     
   });
   Client.once('guildMemberAdd', guildMember =>{
-    let welcomeRole = guildMember.guild.roles.cache.find(role => role.name === 'member');
-    guildMember.roles.add(welcomeRole);
-    guildMember.guild.channels.cache.get('776796675125673984').send(`𝙒𝙀𝙇𝘾𝙊𝙈𝙀 𝙏𝙊 𝙊𝙐𝙍 𝙎𝙀𝙍𝙑𝙀𝙍 <@${guildMember.user.id}>`)
+    memberCounter.send({embed: {color: "RANDOM", description:`Hello ${member}, Welcome to ${member.guild.name}`}})
+    const welcome = member.guild/channel.cache.find(ch => ch.name === '🙏║𝐖𝐄𝐋𝐂𝐎𝐌𝐄')
+
+    welcome.send('A new user joined with name of' + member.user.username)
   })
 });
 
