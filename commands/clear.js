@@ -1,4 +1,4 @@
-odule.exports = {
+module.exports = {
     name: 'clear',
     description: "Clear messages!",                       // CREATED BY COSMICALPHA (OSMI(_ALPHA#1010
    async  execute(message, args) {
