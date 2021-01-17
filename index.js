@@ -5,6 +5,7 @@ const client = new Discord.Client();
 const prefix = '!';              //created by COSMIC ALPHA  (OSMI(_ALPHA#1010
 
 const fs = require('fs');
+const memberCounter = require('./counters/member-counter');
 
 client.commands = new Discord.Collection();
 
@@ -17,13 +18,15 @@ for (const file of commandFiles) {
 
 client.once('ready', () => {
   console.log(`COSMIC ASSISTANT IS ONLINE !`);
+  memberCounter(client)
   client.user.setActivity("OVER MY MY WORLD SERVER", {
     type: 3
+    
   });
 client.once('guildMemberAdd', guildMember =>{
   let welcomeRole = guildMember.guild.roles.cache.find(role => role.name === 'member');
   guildMember.roles.add(welcomeRole);
-  guildMember.guild.channels.cache.get('776796675125673984').send(`𝙒𝙀𝙇𝘾𝙊𝙈𝙀 𝙏𝙊 𝙊𝙐𝙍 𝙎𝙀𝙍𝙑𝙀𝙍 <@${guildMember.user.id}> `)
+  guildMember.guild.channels.cache.get('776796675125673984').send(`𝙒𝙀𝙇𝘾𝙊𝙈𝙀 𝙏𝙊 𝙊𝙐𝙍 𝙎𝙀𝙍𝙑𝙀𝙍 <@${guildMember.user.id}>`)
 })
 
 });
