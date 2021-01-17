@@ -24,7 +24,7 @@ client.once('ready', () => {
     
   });
   client.once('guildMemberAdd', member => {
-    const exampleEmbed = new Discord.RichEmbed()
+    const exampleEmbed = new Discord.MessageEmbed()
         .setColor('#0099ff')
         .setTitle('Welcome')
         .addField('', member.nickname)
