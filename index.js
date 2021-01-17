@@ -23,7 +23,7 @@ client.once('ready', () => {
 client.once('guildMemberAdd', guildMember =>{
   let welcomeRole = guildMember.guild.roles.cache.find(role => role.name === 'member');
   guildMember.roles.add(welcomeRole);
-  guildMember.guild.channels.cache.get('776796675125673984').send(`Welcome <@${guildMember.user.id}> to our server`)
+  guildMember.guild.channels.cache.get('776796675125673984').send(`𝙒𝙀𝙇𝘾𝙊𝙈𝙀 <@${guildMember.user.id}> 𝙩𝙤 𝙤𝙪𝙧 𝙨𝙚𝙧𝙫𝙚𝙧 :verify2:`)
 })
 
 });
