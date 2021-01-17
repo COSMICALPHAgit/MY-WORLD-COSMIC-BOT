@@ -29,11 +29,8 @@ client.on('message', message =>{
 })
 
   client.on('message', (msg) => {
-    if(!message.content.startsWith(prefix) || message.author.bot) return;
-    const args = message.content.slice(prefix.length).split(/ +/);
-    const message = args.shift().toLowerCase();
-
-    if (msg.content === 'off') {
+   
+    if (msg.content === '!off') {
       const exampleEmbed = new Discord.MessageEmbed()
       .setColor('#fa0202')
       .setTitle('SERVER GOING-OFFLINE')                        
@@ -41,7 +38,7 @@ client.on('message', message =>{
       message.delete();
       msg.channel.send(exampleEmbed)
     } 
-    else  if (msg.content === 'tell') {
+    else  if (msg.content === '!tell') {
       const exampleEmbed = new Discord.MessageEmbed()
       .setColor('#02fa44')
       .setTitle('ꜱᴇʀᴠᴇʀ ʀᴇꜱᴛᴀʀᴛɪɴɢ')
