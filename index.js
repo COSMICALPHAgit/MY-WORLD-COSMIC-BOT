@@ -23,19 +23,11 @@ client.once('ready', () => {
     type: 3
     
   });
-  client.on('guildMemberAdd', async newMember => {
-    // IMPORTANT NOTE: Make Sure To Use async and rename bot to client or whatever name you have for your bot events!
-    const welcomeChannel = newMember.guild.channels.cache.find(channel => channel.name === '🙏║𝐖𝐄𝐋𝐂𝐎𝐌𝐄')
-
-    let msgEmbed = new Discord.MessageEmbed()
-    .setTitle (`WELCOME TO OUR SERVER`)
-    // welcomeChannel.send(msgEmbed) | (that's commented so you know to use it only if you want an embed and also don't delete the other "welcomeChannel.send" just change it in there and say "welcomeChannel.send(msgEmbed)" and define the msgEmbed variable as a let and define it above the "welcomeChannel.send" so the bot will check and see that it's defined so errors won't happen!
-    if (newMember.client) return; // checks if it's a bot that joined so the channel won't be spammed with "*Discord Bot* has joined the server" and stuff like that, so check that.
-    const newbieRole = newMember.roles.cache.find(role => role.name === '彡( MEMBERS )彡') // that was to define the role to give newbies (you can name the variable however you want that doesn't matter!)
-    newMember.roles.add(newbieRole.id) // this will add the role to that member!
+  Client.once('guildMemberAdd', guildMember =>{
+    let welcomeRole = guildMember.guild.roles.cache.find(role => role.name === 'member');
+    guildMember.roles.add(welcomeRole);
+    guildMember.guild.channels.cache.get('776796675125673984').send(`𝙒𝙀𝙇𝘾𝙊𝙈𝙀 𝙏𝙊 𝙊𝙐𝙍 𝙎𝙀𝙍𝙑𝙀𝙍 <@${guildMember.user.id}>`)
   })
-
-
 });
 
 client.on('message', message => {
