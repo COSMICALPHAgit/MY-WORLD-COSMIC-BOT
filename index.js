@@ -30,11 +30,8 @@ client.on('message', message => {
   const args = message.content.slice(prefix.length).split(/ +/);
   const command = args.shift().toLowerCase();
 
-  if (command === 'ping') {
-    message.delete();
-    message.channel.send('pong');
-
-  } else if (command === "say") {
+  
+  if (command === "say") {
     let text = args.join(" ");
     message.delete();
     message.channel.send(text);
