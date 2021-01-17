@@ -35,7 +35,6 @@ client.on('message', message =>{
       .setColor('#fa0202')
       .setTitle('SERVER GOING-OFFLINE')                        
       .setFooter('ADMIN')
-      message.delete();
       msg.channel.send(exampleEmbed)
     } 
     else  if (msg.content === '!tell') {
@@ -43,7 +42,6 @@ client.on('message', message =>{
       .setColor('#02fa44')
       .setTitle('ꜱᴇʀᴠᴇʀ ʀᴇꜱᴛᴀʀᴛɪɴɢ')
       .setFooter('𝗕𝗬 𝗦𝗘𝗥𝗩𝗘𝗥 𝗢𝗪𝗡𝗘𝗥')
-      message.delete();
       msg.channel.send(exampleEmbed)
     }
   
