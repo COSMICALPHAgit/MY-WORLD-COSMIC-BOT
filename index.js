@@ -26,7 +26,7 @@ client.once('ready', () => {
   client.on("guildMemberAdd", guildmember =>{
     const embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
-    .setTitle(`<@${guildmember.id}>`)
+    .setTitle(`<@${guildmember.user.id}>`)
     .setDescription("𝙒𝙀𝙇𝘾𝙊𝙈𝙀 𝙏𝙊 𝙊𝙐𝙍 𝙎𝙀𝙍𝙑𝙀𝙍")
     .setFooter("𝙈𝙔 𝙒𝙊𝙍𝙇𝘿 ")
     .setThumbnail(guildmember.user.displayAvatarURL({dynamic: true}))
