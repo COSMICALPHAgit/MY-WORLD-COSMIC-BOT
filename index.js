@@ -23,17 +23,18 @@ client.once('ready', () => {
     type: 3
     
   });
-  client.on('guildMemberAdd', member => {
-    const channel = member.guild.channels.find(ch => ch.name === '🙏║𝐖𝐄𝐋𝐂𝐎𝐌𝐄');
+  client.once('guildMemberAdd', member => {
+    let welcomeRole = guildMember.guild.roles.cache.find(role => role.name === 'member');
+    guildMember.roles.add(welcomeRole);
     let embed = new Discord.RichEmbed()
     .setTitle("Welcome")
     .setAuthor(`${member.user.tag} Has Joined.`, member.user.displayAvatarURL,)
     .setThumbnail(member.user.displayAvatarURL)
-    .addField('Date Joined', member.user.createdAt, true)
     .addField('Total Members', member.guild.memberCount, true)
   
-      channel.send(embed);
-  });
+    guildMember.guild.channels.cache.get('776796675125673984').send(embed);
+  
+  })
   
 
 
