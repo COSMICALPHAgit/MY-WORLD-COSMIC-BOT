@@ -20,7 +20,11 @@ client.once('ready', () => {
   client.user.setActivity("OVER MY MY WORLD SERVER", {
     type: 3
   });
-
+client.once('guildMemberAdd', guildMember =>{
+  let welcomeRole = guildMember.guild.roles.cache.find(role => role.name === 'member');
+  guildMember.roles.add(welcomeRole);
+  guildMember.guild.channels.cache.get('776796675125673984').send(`Welcome <@{guildMember.user.id}> to our server`)
+})
 
 });
 
