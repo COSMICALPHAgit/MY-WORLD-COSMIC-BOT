@@ -24,13 +24,13 @@ client.once('ready', () => {
     
   });
   client.once('guildMemberAdd', member => {
-    let embed = new Discord.RichEmbed()
+    let exampleEmbed = new Discord.MessageEmbed()
     .setTitle("Welcome")
     .setAuthor(`${member.user.tag} Has Joined.`, member.user.displayAvatarURL,)
     .setThumbnail(member.user.displayAvatarURL)
     .addField('Total Members', member.guild.memberCount, true)
     guildMember.roles.add(welcomeRole);
-    guildMember.guild.channels.cache.get('776796675125673984').send(embed);
+    guildMember.guild.channels.cache.get('776796675125673984').send(exampleEmbed);
   
   })
   
