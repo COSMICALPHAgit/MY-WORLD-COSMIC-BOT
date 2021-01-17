@@ -35,6 +35,8 @@ client.on('message', message =>{
       .setColor('#fa0202')
       .setTitle('SERVER GOING-OFFLINE')                        
       .setFooter('ADMIN')
+      let message = args.join(" ");
+      message.delete();
       msg.channel.send(exampleEmbed)
     } 
     else  if (msg.content === '!tell') {
