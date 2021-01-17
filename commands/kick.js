@@ -12,7 +12,7 @@ module.exports = {
 
            
 
-            message.channel.send('you you dont have the right permission from the server owner');
+            message.channel.send('you you dont have the right Permission from the server owner');
 
         }
     }
