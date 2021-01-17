@@ -4,6 +4,17 @@ const client = new Discord.Client();
 
 const prefix = '!';
 
+const fs = require('fs');
+
+client.commands = new Discord.collectiom();
+
+const commandFiles = fs.readdirSync('./commans/').filter(file => file/endWith('.js'));
+for(const file of commandFiles){
+  const command = require(`./commands/${file}`);
+
+  client.commands.set(command.name, command);
+}
+
 client.once('ready', () => {
   console.log(`COSMIC ASSISTANT IS ONLINE !`);
   client.user.setActivity("OVER MY MY WORLD SERVER", {type: 3});
@@ -17,7 +28,7 @@ client.on('message', message =>{
   const args = message.content.slice(prefix.length).split(/ +/);
   const command = args.shift().toLowerCase();
 
-  if(command === 'off'){
+  if(command === 'ping'){
     message.delete();
     message.channel.send('pong');
 
@@ -25,7 +36,11 @@ client.on('message', message =>{
     let text = args.join(" ");
     message.delete();
     message.channel.send(text);
+  } else if(command === 'kick'){
+    client.commands.get('kick').execute(message, args);
+    
   }
+
 })
 
   client.on('message', (msg) => {
