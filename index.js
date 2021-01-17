@@ -6,9 +6,9 @@ const prefix = '!';
 
 const fs = require('fs');
 
-client.commands = new Discord.collection();
+client.commands = new Discord.Collection();
 
-const commandFiles = fs.readdirSync('./commans/').filter(file => file/endWith('.js'));
+const commandFiles = fs.readdirSync('./commands/').filter(file => file/endWith('.js'));
 for(const file of commandFiles){
   const command = require(`./commands/${file}`);
 
