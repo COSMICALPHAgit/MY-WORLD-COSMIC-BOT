@@ -19,6 +19,11 @@ client.on('message', message =>{
 
   if(command === 'ping'){
     message.channel.send('pong');
+    
+  } else if(command === "say"){
+    let text = args.join(" ");
+    message.delete();
+    message.channel.send(text);
   }
 
   
