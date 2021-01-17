@@ -23,11 +23,16 @@ client.once('ready', () => {
     type: 3
     
   });
-client.once('guildMemberAdd', guildMember =>{
-  let welcomeRole = guildMember.guild.roles.cache.find(role => role.name === 'member');
-  guildMember.roles.add(welcomeRole);
-  guildMember.guild.channels.cache.get('776796675125673984').send(`𝙒𝙀𝙇𝘾𝙊𝙈𝙀 𝙏𝙊 𝙊𝙐𝙍 𝙎𝙀𝙍𝙑𝙀𝙍 <@${guildMember.user.id}>`)
+  client.once('guildMemberAdd', member => {
+    const exampleEmbed = new Discord.RichEmbed()
+        .setColor('#0099ff')
+        .setTitle('Welcome')
+        .addField('', member.nickname)
+        .setImage(member.user.avatarURL)
+
+    member.guild.channels.get('776796675125673984').send(exampleEmbed);
 })
+
 
 });
 
