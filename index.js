@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
-const prefix = '!';
+const prefix = '!'; //created by COSMIC ALPHA  (OSMI(_ALPHA#1010
 
 const fs = require('fs');
 
@@ -25,46 +25,33 @@ client.once('ready', () => {
 });
 
 client.on('message', message => {
-      if (!message.content.startsWith(prefix) || message.author.bot) return;
+  if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-      const args = message.content.slice(prefix.length).split(/ +/);
-      const command = args.shift().toLowerCase();
+  const args = message.content.slice(prefix.length).split(/ +/);
+  const command = args.shift().toLowerCase();
 
-      if (command === 'ping') {
-        message.delete();
-        message.channel.send('pong');
+  if (command === 'ping') {
+    message.delete();
+    message.channel.send('pong');
 
-      } else if (command === "say") {
-        let text = args.join(" ");
-        message.delete();
-        message.channel.send(text);
-      } else if (command === 'kick') {
-        client.commands.get('kick').execute(message, args);
-        
-      } else if (command === 'ban') {
-        client.commands.get('ban').execute(message, args);
+  } else if (command === "say") {
+    let text = args.join(" ");
+    message.delete();
+    message.channel.send(text);
+  } else if (command === 'kick') {
+    client.commands.get('kick').execute(message, args);
 
-        }
+  } else if (command === 'ban') {
+    client.commands.get('ban').execute(message, args);
 
-      })
-
-    client.on('message', (msg) => {
-
-      if (msg.content === '!off') {
-        const exampleEmbed = new Discord.MessageEmbed()
-          .setColor('#fa0202')
-          .setTitle('SERVER GOING-OFFLINE')
-          .setFooter('ADMIN')
-        msg.channel.send(exampleEmbed)
-      } else if (msg.content === '!tell') {
-        const exampleEmbed = new Discord.MessageEmbed()
-          .setColor('#02fa44')
-          .setTitle('ꜱᴇʀᴠᴇʀ ʀᴇꜱᴛᴀʀᴛɪɴɢ')
-          .setFooter('𝗕𝗬 𝗦𝗘𝗥𝗩𝗘𝗥 𝗢𝗪𝗡𝗘𝗥')
-        msg.channel.send(exampleEmbed)
-      }
+  }else if (command === 'command') {
+    client.commands.get('command').execute(message, args);
+  }
 
 
-    });
 
-    client.login(process.env.token);
+
+
+});
+
+client.login(process.env.token);
