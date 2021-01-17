@@ -23,7 +23,7 @@ client.once('ready', () => {
     type: 3
     
   });
-  Client.once('guildMemberAdd', guildMember =>{
+  client.once('guildMemberAdd', guildMember =>{
     memberCounter.send({embed: {color: "RANDOM", description:`Hello ${member}, Welcome to ${member.guild.name}`}})
     const welcome = member.guild/channel.cache.find(ch => ch.name === '🙏║𝐖𝐄𝐋𝐂𝐎𝐌𝐄')
 
