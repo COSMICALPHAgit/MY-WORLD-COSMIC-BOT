@@ -6,7 +6,7 @@ const prefix = '!';
 
 const fs = require('fs');
 
-client.commands = new Discord.collectiom();
+client.commands = new Discord.collection();
 
 const commandFiles = fs.readdirSync('./commans/').filter(file => file/endWith('.js'));
 for(const file of commandFiles){
@@ -38,7 +38,7 @@ client.on('message', message =>{
     message.channel.send(text);
   } else if(command === 'kick'){
     client.commands.get('kick').execute(message, args);
-    
+
   }
 
 })
