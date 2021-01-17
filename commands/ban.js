@@ -2,6 +2,8 @@ module.exports = {
     name: 'ban',
     description: "This command ban a member!",
     execute(message, args){
+
+        if(message.member.roles.cache.has('776786219145232406')){
         const member = message.mentions.users.first();
         if(member){
             const memberTarget = message.guild.members.cache.get(member.id);
@@ -15,4 +17,5 @@ module.exports = {
 
         }
     }
+}
 }
