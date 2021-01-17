@@ -27,7 +27,7 @@ client.once('ready', () => {
     memberCounter.send({embed: {color: "RANDOM", description:`Hello ${member}, Welcome to ${member.guild.name}`}})
     const welcome = member.guild/channel.cache.find(ch => ch.name === '🙏║𝐖𝐄𝐋𝐂𝐎𝐌𝐄')
 
-    welcome.send('A new user joined with name of' + member.user.username)
+    welcome.send('A new use joined with name of' + member.user.username)
   })
 });
 
