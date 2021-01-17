@@ -23,12 +23,15 @@ client.once('ready', () => {
     type: 3
     
   });
-  client.once('guildMemberAdd', guildMember =>{
-    memberCounter.send({embed: {color: "RANDOM", description:`Hello ${member}, Welcome to ${member.guild.name}`}})
-    const welcome = member.guild/channel.cache.find(ch => ch.name === '🙏║𝐖𝐄𝐋𝐂𝐎𝐌𝐄')
+  client.on("guildMemberAdd", guildmember =>{
+    const embed = new Discord.MessageEmbed()
+    .setColor("RANDOM")
+    .setDescription(`**Welcome <@${guildmember.id}>!**`)
+    .setThumbnail(guildmember.user.displayAvatarURL({dynamic: true}))
+    .setTimestamp()
+    guildmember.guild.channels.cache.get('776796675125673984').send(`<@${guildmember.id}>`).then(guildmember.guild.channels.cache.get('776796675125673984').send(embed))
+})
 
-    welcome.send('A new use joined with name of' + member.user.username)
-  })
 });
 
 client.on('message', message => {
