@@ -59,14 +59,7 @@ client.on('message', message =>{
       .setFooter('𝗕𝗬 𝗦𝗘𝗥𝗩𝗘𝗥 𝗢𝗪𝗡𝗘𝗥')
       msg.channel.send(exampleEmbed)
     }
-    else if (msg.content.startsWith('!kick')) {
-      if (msg.mentions.users.size) {
-        const taggedUser = msg.mentions.users.first();
-        msg.channel.send(`You wanted to kick: ${taggedUser.username}`);
-      } else {
-        msg.reply('Please tag a valid user!');
-      }
-    }
+   
   
 });
 
