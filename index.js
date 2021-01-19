@@ -23,12 +23,30 @@ client.once('ready', () => {
     type: 3
     
   });
+
+ client.on('messageReactionAdd', async (reaction, user) => {
+    if(reaction.emoji.name === "✅") return;
+    if(user === bot.user) return;
+ 
+    let role = client.guild.roles.find("name", "C - Verified");
+    let role1 = client.guild.roles.find("name", "C - Unverified");
+ 
+    await user.addRole(role.id);
+    await user.removeRole(role1.id);
+  });
+ client.on("message", async message => {
+    if(message.author.id != "785417567815598091") return;
+    message.react("✅");
+    });
+
+
+
   client.on("guildMemberAdd", guildmember =>{
     const embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setTitle(guildmember.user.username)
     .setDescription("𝙒𝙀𝙇𝘾𝙊𝙈𝙀 𝙏𝙊 𝙊𝙐𝙍 𝙎𝙀𝙍𝙑𝙀𝙍 <a:verify2:785775855300247592>")
-    .setFooter("𝙈𝙔 𝙒𝙊𝙍𝙇𝘿 <a:discord:791669212774531122>")
+    .setFooter("𝙈𝙔 𝙒𝙊𝙍𝙇𝘿")
     .setThumbnail(guildmember.user.displayAvatarURL({dynamic: true}))
     .setTimestamp()
     guildmember.guild.channels.cache.get('776796675125673984').send(`<@${guildmember.id}>`).then(guildmember.guild.channels.cache.get('776796675125673984').send(embed))
