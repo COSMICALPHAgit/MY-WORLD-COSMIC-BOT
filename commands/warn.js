@@ -1,65 +1,43 @@
-const Discord = require("discord.js");
-const fs = require("fs");
-const ms = require("ms");
-let warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
+const Discord = require('discord.js');
 
-module.exports.run = async (bot, message, args) => {
-  //!warn @daeshan <reason>
-  if (!message.member.hasPermission("MANAGE_MEMBERS"))
-    return message.reply("No can do pal!");
-  let wUser =
-    message.guild.member(message.mentions.users.first()) ||
-    message.guild.members.get(args[0]);
-  if (!wUser) return message.reply("Couldn't find them yo");
-  if (!args[1]) return message.reply("You need to specify a reason");
-  if (wUser.hasPermission("MANAGE_MESSAGES"))
-    return message.reply("They waaaay too kewl");
-  let reason = args.join(" ").slice(22);
+const db = require('quick.db');
 
-  if (!warns[wUser.id])
-    warns[wUser.id] = {
-      warns: 0,
-    };
+module.exports = {
+    name: "warn",
+    description: "Warn a member",
 
-  warns[wUser.id].warns++;
+    async run (client, message, args) {
+        if(!message.member.hasPermission("MANAGE_SERVER")) return message.channel.send('You can\'t use that');
 
-  fs.writeFile("./warnings.json", JSON.stringify(warns), (err) => {
-    if (err) console.log(err);
-  });
+        const user = message.mentions.users.first() || message.guild.members.cache.get(args[0]);
 
-  let warnEmbed = new Discord.RichEmbed()
-    .setDescription("Warns")
-    .setAuthor(message.author.username)
-    .setColor("#fc6400")
-    .addField("Warned User", `<@${wUser.id}>`)
-    .addField("Warned In", message.channel)
-    .addField("Number of Warnings", warns[wUser.id].warns)
-    .addField("Reason", reason);
+        if(!user) return message.channel.send('Please specify a user, via mention or ID');
 
-  let warnchannel = message.guild.channels.find(`name`, "hall-of-shame");
-  if (!warnchannel) return message.reply("Couldn't find channel");
+        if(user.bot) return message.channel.send('You can\'t warn bots');
 
-  warnchannel.send(warnEmbed);
+        if(message.author.id === user.id) return message.channel.send('You can\'t warn yourself nitwit');
 
-  if (warns[wUser.id].warns == 2) {
-    let muterole = message.guild.roles.find(`name`, "[🤐]muted");
-    if (!muterole) return message.reply("You should create that role dude.");
+        if(message.guild.owner.id === user.id) return message.channel.send('You can\'t warn the server\'s owner');
 
-    let mutetime = "10m"; // time muded xs / xm /xh /xd
-    await wUser.addRole(muterole.id);
-    message.channel.send(`<@${wUser.id}> has been temporarily muted`);
+        let reason = args.slice(1).join(" ");
 
-    setTimeout(function () {
-      wUser.removeRole(muterole.id);
-      message.reply(`<@${wUser.id}> has been unmuted.`);
-    }, ms(mutetime));
-  }
-  if (warns[wUser.id].warns == 3) {
-    message.guild.member(wUser).ban(reason);
-    message.reply(`<@${wUser.id}> has been banned.`);
-  }
-};
+        if(!reason) reason = 'Unspecified';
 
-module.exports.help = {
-  name: "warn",
-};
+        let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
+
+        if(warnings === 3) return message.channel.send(`${user} has already reached three warnings`);
+
+
+        if(warnings === null) {
+            db.set(`warnings_${message.guild.id}_${user.id}`, 1);
+            user.send(`You were warned in ${message.guild.name} for the follwoing reason: \`${reason}\``)
+            await message.channel.send(`**${user.username}** has been warned`)
+        }
+
+        if(warnings !== null){
+            db.add(`warnings_${message.guild.id}_${user.id}`, 1)
+            user.send(`You were warned in ${message.guild.name} for the follwoing reason: \`${reason}\``)
+            await message.channel.send(`**${user.username}** has been warned`)
+        }
+    }
+}
