@@ -27,7 +27,7 @@ client.once('ready', () => {
     const embed = new Discord.MessageEmbed()
     .setColor("RANDOM")
     .setTitle(guildmember.user.username)
-    .setDescription("𝙒𝙀𝙇𝘾𝙊𝙈𝙀 𝙏𝙊 𝙊𝙐𝙍 𝙎𝙀𝙍𝙑𝙀𝙍 :verify2:")
+    .setDescription("𝙒𝙀𝙇𝘾𝙊𝙈𝙀 𝙏𝙊 𝙊𝙐𝙍 𝙎𝙀𝙍𝙑𝙀𝙍 <a:verify2:785775855300247592>")
     .setFooter("𝙈𝙔 𝙒𝙊𝙍𝙇𝘿 ")
     .setThumbnail(guildmember.user.displayAvatarURL({dynamic: true}))
     .setTimestamp()
