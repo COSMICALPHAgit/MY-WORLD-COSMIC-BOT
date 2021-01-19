@@ -74,7 +74,7 @@ client.on('message', message => {
     client.commands.get('clear').execute(message, args);
   }
   
-  if(command === "unban"){
+  else if(command === "unban"){
     if(!msg.member.hasPermission("BAN_MEMBERS")) {
       return msg.channel.send(`**${msg.author.username}**, You do not have perms to unban someone`)
     }
