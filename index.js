@@ -19,7 +19,7 @@ for (const file of commandFiles) {
 client.once('ready', () => {
   console.log(`COSMIC ASSISTANT IS ONLINE !`);
   memberCounter(client)
-  client.user.setActivity("OVER MY MY WORLD SERVER", {
+  client.user.setActivity("ᴏᴠᴇʀ ᴍʏ ᴡᴏʀʟᴅ ꜱᴇʀᴠᴇʀ <a:gold:791669218369208401>", {
     type: 3
     
   });
