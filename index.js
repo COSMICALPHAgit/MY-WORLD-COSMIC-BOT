@@ -32,7 +32,17 @@ client.once('ready', () => {
     .setThumbnail(guildmember.user.displayAvatarURL({dynamic: true}))
     .setTimestamp()
     guildmember.guild.channels.cache.get('776796675125673984').send(`<@${guildmember.id}>`).then(guildmember.guild.channels.cache.get('776796675125673984').send(embed))
-})
+  })
+
+  if (command === "assignrole") {
+    const Role = message.mentions.roles.first();
+
+    message.mentions.members.forEach(member => {
+        member.roles.add(Role).catch(e => console.error(e));
+    });
+
+    message.channel.send(`Added role ${Role.name} to ${message.mentions.members.map(member => member.user.tag).join(", ")}.`);
+}
 
 });
 
