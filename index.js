@@ -64,15 +64,6 @@ client.on('message', message => {
   }else if (command === 'clear') {
     message.delete();
     client.commands.get('clear').execute(message, args);
-  }else if (command === 'warn') {
-    message.delete();
-    client.commands.get('warn').execute(message, args);
-  }else if (command === 'deletewarns') {
-    message.delete();
-    client.commands.get('deletewarns').execute(message, args);
-  }else if (command === 'warnings') {
-    message.delete();
-    client.commands.get('warnings').execute(message, args);
   }
 
 
