@@ -30,7 +30,7 @@ module.exports = {
 
         if(warnings === null) {
             db.set(`warnings_${message.guild.id}_${user.id}`, 1);
-            user.send(`You were warned in ${message.guild.name} for the follwoing reason: \`${reason}\``)
+            user.send(`You were warned in ${message.guild.name} For the follwoing reason: \`${reason}\``)
             await message.channel.send(`**${user.username}** has been warned`)
         }
 
