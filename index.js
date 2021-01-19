@@ -24,21 +24,11 @@ client.once('ready', () => {
     
   });
 
- client.on('messageReactionAdd', async (reaction, user) => {
-    if(reaction.emoji.name === "✅") return;
-    if(user === client.user) return;
- 
-    let role = client.guild.roles.find("name", "C - Verified");
-    let role1 = client.guild.roles.find("name", "C - Unverified");
- 
-    await user.addRole(role.id);
-    await user.removeRole(role1.id);
-  });
- client.on("message", async message => {
-    if(message.author.id != "785417567815598091") return;
-    message.react("✅");
-    });
 
+  
+  
+  
+      
 
 
   client.on("guildMemberAdd", guildmember =>{
