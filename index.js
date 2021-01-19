@@ -26,7 +26,7 @@ client.once('ready', () => {
 
  client.on('messageReactionAdd', async (reaction, user) => {
     if(reaction.emoji.name === "✅") return;
-    if(user === bot.user) return;
+    if(user === client.user) return;
  
     let role = client.guild.roles.find("name", "C - Verified");
     let role1 = client.guild.roles.find("name", "C - Unverified");
