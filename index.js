@@ -72,11 +72,7 @@ client.on('message', message => {
   }else if (command === 'clear') {
     message.delete();
     client.commands.get('clear').execute(message, args);
-  }else if (command === 'unban') {
-    message.delete();
-    client.commands.get('unban').execute(message, args);
   }
-
 
 
 
