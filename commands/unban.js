@@ -1,24 +1,31 @@
-const Discord = require(`discord.js`);
+const {
+    Client,
+    Message
+} = require("discord.js");
 
-module.exports.run = async(client, message, args) => {
-   
-let User = args[0];
-let Reason = args.slice(1).join(` `);
-if (!User) return message.reply(`Who are we unbanning?`);
-if (!Reason) Reason = `Unbanned by ${message.author.tag}`
+module.exports = {
+    name: 'unban',
+    description: "This command unban a member!",
 
-message.guild.fetchBans().then(bans => {
-if (bans.some(u => User.includes(u.username))) {
-let user = bans.find(user.username === User);
+    run: async (client, message, args) => {
 
-message.guild.unban(user.id, Reason);
-}
-else if (bans.some(u => User.includes(u.id))) {
+        const member = args[0];
 
-message.guild.unban(User, Reason);
+        if (!member) {
+            return message.channel.send(data `Please enter a user id`)
+        }
+
+        try {
+
+            message.guild.fetchBans().then(bans => {
+                message.guild.members.unban(member)
+            })
+            await message.channel.send(data `$member) has been unbanned`);
+        } catch (e) {
+            return message.channel.send(data `An error occured!`)
+        }
+    }
 }
-else {
-return message.reply(`This person is not banned`);
-}
-});
-}
+
+
+
