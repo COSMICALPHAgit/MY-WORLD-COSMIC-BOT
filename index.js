@@ -94,7 +94,7 @@ if(cmd === "!ban") {
 }
 
 if(cmd === "!unban") {
-    let toBan = await bot.users.fetch(args[0])
+    let toBan = await client.users.fetch(args[0])
 
     if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("You need permissions!") 
     if (!message.guild.me.hasPermission("BAN_MEMBERS")) return message.channel.send("Bot need permissions!") 
