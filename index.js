@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
-const prefix = '!';              //created by COSMIC ALPHA  (OSMI(_ALPHA#1010
+const prefix = '!';            
 
 const fs = require('fs');
 const memberCounter = require('./counters/member-counter');
@@ -68,15 +68,14 @@ client.on('message', message => {
   }else if (command === 'clear') {
     message.delete();
     client.commands.get('clear').execute(message, args);
-  }else if (command === 'unban'){
-    message.delete();
-    client.commands.get('unban').execute(message, args);
-}
+  }//else if (command === 'unban'){
+    //message.delete();
+    //client.commands.get('unban').execute(message, args);
+//}
 
 
 
 let messageArray = message.content.split(" ")
-let args = messageArray.slice(1);
 
 let cmd = messageArray[0];
 
@@ -106,7 +105,6 @@ if(cmd === "!unban") {
 
     message.channel.send(`${toBan} has been unbanned from the server!`)
 }
-
 
 
 
