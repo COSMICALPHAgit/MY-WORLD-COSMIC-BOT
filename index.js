@@ -103,9 +103,9 @@ if(cmd === "!unban") {
     message.channel.send(`${toBan} has been unbanned from the server!`)
 }
 
-
+                                                                               //IF UOU NEED TO SET PERMISSION CONTACT ME <(OSMI(_ALPHA/>#1010
 
 
 });
 
-client.login(process.env.token);
+client.login(process.env.token); //YOU CAN REPALCE WITH YOUR TOKEN
